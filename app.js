@@ -1,6 +1,64 @@
-import express from 'express';
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
+import session from "express-session";
+
+import EventsController from "./controllers/events/events-controller.js";
+import UsersController from "./controllers/users/users-controller.js";
+import AdminController from "./controllers/admin/admin-controller.js";
+import SessionController from "./session-controller.js";
+
+dotenv.config();
+
+const options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 5000,
+  autoIndex: false,
+  maxPoolSize: 10,
+  socketTimeoutMS: 45000,
+  family: 4,
+};
+
+// const CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
+const CONNECTION_STRING = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.qf9dktv.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
+
+mongoose.connect(CONNECTION_STRING, options)
+.then(() => {
+  console.log("Connected to MongoDB!");
+}).catch(err => {
+  console.log(err);
+});
+
 const app = express();
 
+const allowedOrigins = [
+  "http://localhost:3000",
+  /netlify\.app$/,
+];
+app.use(
+  cors({
+    credentials: true,
+    origin: allowedOrigins,
+  })
+);
 
+app.use(
+  session({
+    secret: "your-secret-key",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
-app.listen(4000);
+app.use(express.json());
+
+EventsController(app);
+UsersController(app);
+SessionController(app);
+AdminController(app);
+
+app.listen(4000, () => {
+  console.log("Server listening on port 4000!");
+});
