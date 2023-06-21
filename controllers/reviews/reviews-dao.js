@@ -8,7 +8,7 @@ export const updateReviewById = (reviewId, newReview) =>
 export const findReviewsById = (idReview) =>
   reviewsModel.find({ _id: idReview }).sort("-date").populate("host").exec();
 
-export const findReviewsByFood = (idSong) =>
+export const findReviewsBySong = (idSong) =>
   reviewsModel.find({ idSong }).sort("-date").populate("host").exec();
 
 export const findReviewsByHost = (host) =>
