@@ -9,7 +9,7 @@ const EventsController = (app) => {
       hostId: currentUser._id,
       hostName: currentUser.username,
     };
-    // newEvent.date = Date.now();
+    newEvent.date = new Date();
     console.log(newEvent);
     const actualEvent = await eventsDao.createEvent(newEvent);
     res.json(actualEvent);
