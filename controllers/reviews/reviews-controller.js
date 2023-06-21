@@ -27,7 +27,7 @@ const ReviewsController = (app) => {
     res.json(response);
   };
 
-  const findReviewsBySong = async (req, res) => {
+  const findReviewsByNotes = async (req, res) => {
     const idSong = req.params.idSong;
     const reviews = await dao.findReviewsBySong(idSong);
     res.send(reviews);
@@ -47,7 +47,7 @@ const ReviewsController = (app) => {
   app.post("/api/reviews/song/:idSong", createReview);
   app.put("/api/reviews/song/:idSong", updateReview);
   app.delete("/api/reviews/song/:idSong", deleteReview);
-  app.get("/api/reviews/song/:idSong", findReviewsBySong);
+  app.get("/api/reviews/song/:idSong", findReviewsByNotes);
   app.get("/api/users/:host/reviews", findReviewsByHost);
   app.get("/api/reviews", findAllReviews);
 };
