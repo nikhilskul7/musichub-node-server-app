@@ -8,6 +8,9 @@ import EventsController from "./controllers/events/events-controller.js";
 import UsersController from "./controllers/users/users-controller.js";
 import AdminController from "./controllers/admin/admin-controller.js";
 import SessionController from "./session-controller.js";
+import LikesController from "./controllers/likes/likes-controller.js";
+import FollowsController from "./controllers/follows/follows-controller.js";
+import ReviewsController from "./controllers/reviews/reviews-controller.js";
 
 dotenv.config();
 
@@ -54,8 +57,12 @@ app.use(
 
 app.use(express.json());
 
+
 EventsController(app);
 UsersController(app);
+LikesController(app);
+FollowsController(app);
+ReviewsController(app);
 SessionController(app);
 AdminController(app);
 
