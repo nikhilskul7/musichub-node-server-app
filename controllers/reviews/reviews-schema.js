@@ -8,7 +8,7 @@ const reviewsSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "UserModel",
     },
-    date: Date,
+    time: Date,
   },
   { collection: "reviews" }
 );

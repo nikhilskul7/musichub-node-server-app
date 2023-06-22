@@ -7,7 +7,7 @@ const ReviewsController = (app) => {
     review = {
       ...review,
       host: currentUser._id,
-      date: new Date(),
+      time: Date.now(),
     };
     console.log(review);
     const actualReview = await dao.createReview(review);

@@ -21,7 +21,7 @@ const eventsSchema = mongoose.Schema(
     },
     price: {
       type: Number,
-      required: false
+      required: true
     }
   },
   { collection: "events" }
