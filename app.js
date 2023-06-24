@@ -14,19 +14,6 @@ import ReviewsController from "./controllers/reviews/reviews-controller.js";
 
 dotenv.config();
 
-app.use(
-  session({
-    secret: "any string",
-    resave: false,
-    proxy: true,
-    saveUninitialized: false,
-    cookie: {
-      sameSite: "none",
-      secure: true
-    }
-  })
-);    
-
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -63,11 +50,16 @@ app.use(
 
 app.use(
   session({
-    secret: "your-secret-key",
+    secret: "any string",
     resave: false,
-    saveUninitialized: true,
+    proxy: true,
+    saveUninitialized: false,
+    cookie: {
+      sameSite: "none",
+      secure: true
+    }
   })
-);
+);    
 
 app.use(express.json());
 
