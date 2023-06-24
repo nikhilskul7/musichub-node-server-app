@@ -24,8 +24,8 @@ const options = {
   family: 4,
 };
 
-// const CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
-const CONNECTION_STRING = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.qf9dktv.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
+const CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
+//const CONNECTION_STRING = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.qf9dktv.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
 
 mongoose.connect(CONNECTION_STRING, options)
 .then(() => {
@@ -38,6 +38,7 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:3000",
+  "https://main--snazzy-conkies-13e790.netlify.app",
   /netlify\.app$/,
 ];
 app.use(
