@@ -14,6 +14,19 @@ import ReviewsController from "./controllers/reviews/reviews-controller.js";
 
 dotenv.config();
 
+app.use(
+  session({
+    secret: "any string",
+    resave: false,
+    proxy: true,
+    saveUninitialized: false,
+    cookie: {
+      sameSite: "none",
+      secure: true
+    }
+  })
+);    
+
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -64,7 +77,7 @@ UsersController(app);
 LikesController(app);
 FollowsController(app);
 ReviewsController(app);
-SessionController(app);
+//SessionController(app);
 AdminController(app);
 
 app.listen(4000, () => {
