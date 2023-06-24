@@ -24,7 +24,7 @@ const options = {
   family: 4,
 };
 
-const CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
+const CONNECTION_STRING = process.env.CONNECTION_STRING_DB;
 //const CONNECTION_STRING = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.qf9dktv.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`;
 
 mongoose.connect(CONNECTION_STRING, options)
