@@ -3,13 +3,11 @@ import * as eventsDao from "./events-dao.js";
 const EventsController = (app) => {
   const createEvent = async (req, res) => {
     const newEvent = req.body;
-    console.log(req.session);
     const currentUser = req.session["currentUser"];
     newEvent.host = {
       hostId: currentUser._id,
       hostName: currentUser.username,
     };
-    console.log(newEvent);
     const actualEvent = await eventsDao.createEvent(newEvent);
     res.json(actualEvent);
   };
@@ -32,7 +30,6 @@ const EventsController = (app) => {
   const findEventByUserId = async (req, res) => {
     const uid = req.params.uid;
     const allEvents = await eventsDao.findEventByUserId(uid);
-    console.log(allEvents);
     res.json(allEvents);
   };
 

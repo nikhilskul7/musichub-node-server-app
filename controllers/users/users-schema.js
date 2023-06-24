@@ -27,15 +27,18 @@ export const adminSchema = mongoose.Schema({
 });
 
 export const creatorSchema = mongoose.Schema({
-  bio: { type: String, required: true, default: 'I am a music creator' },
+  bio: { type: String, required: true, default: 'I am an event manager' },
   profilePic: {
     type: String,
     required: true,
-    default: 'https://www.w3schools.com/howto/img_avatar.png',
+    default: function() {
+      const randomSeed = Math.random().toString(36).substring(7);
+      return `https://robohash.org/${randomSeed}.png`;
+    },
   },
   website: {
     type: String,
     required: true,
-    default: 'https://www.w3schools.com/howto/img_avatar.png',
+    default: 'https://user.github.io/',
   },
 });

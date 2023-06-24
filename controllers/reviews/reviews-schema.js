@@ -4,7 +4,7 @@ const reviewsSchema = mongoose.Schema(
   {
     review: String,
     idSong: String,
-    author: {
+    host: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "UserModel",
     },

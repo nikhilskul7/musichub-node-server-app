@@ -13,7 +13,6 @@ const UsersController = (app) => {
   //create new user
   const createUser = async (req, res) => {
     const newUser = req.body;
-    console.log(newUser);
     const actualUser = await createUserHelper(newUser);
     res.json(actualUser);
   };
@@ -32,7 +31,6 @@ const UsersController = (app) => {
         }
         return resolve(actualUser);
       } catch (e) {
-        console.log(e);
         return reject(e);
       }
     });
@@ -56,10 +54,8 @@ const UsersController = (app) => {
         } else {
           status = await userDao.updateUser(userIdToUpdate, updates);
         }
-        console.log(status);
         return resolve(status);
       } catch (e) {
-        console.log(e);
         return reject(e);
       }
     });
@@ -83,10 +79,8 @@ const UsersController = (app) => {
         } else {
           status = await userDao.deleteUser(userIdToDelete);
         }
-        console.log(status);
         return resolve(status);
       } catch (e) {
-        console.log(e);
         return reject(e);
       }
     });
@@ -105,7 +99,6 @@ const UsersController = (app) => {
       req.session['currentUser'] = currentUser;
       res.json(currentUser);
     } catch (e) {
-      console.log(e);
       res.status(400).json(e);
     }
     return;
@@ -128,7 +121,6 @@ const UsersController = (app) => {
 
   //auth-logout user
   const logout = (req, res) => {
-    console.log(req.session);
     req.session.destroy();
     res.sendStatus(200);
   };

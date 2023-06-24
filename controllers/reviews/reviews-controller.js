@@ -2,12 +2,14 @@ import * as dao from "./reviews-dao.js";
 
 const ReviewsController = (app) => {
   const createReview = async (req, res) => {
+    const songId = req.params.idSong;
     const currentUser = req.session["currentUser"];
     let review = req.body;
     review = {
       ...review,
       host: currentUser._id,
       time: Date.now(),
+      idSong: songId,
     };
     console.log(review);
     const actualReview = await dao.createReview(review);
@@ -22,14 +24,14 @@ const ReviewsController = (app) => {
   };
 
   const deleteReview = async (req, res) => {
-    const reviewID = req.params.idSong;
-    const response = await dao.deleteReview(reviewID);
+    const songId = req.params.idSong;
+    const response = await dao.deleteReview(songId);
     res.json(response);
   };
 
-  const findReviewsByNotes = async (req, res) => {
-    const idSong = req.params.idSong;
-    const reviews = await dao.findReviewsBySong(idSong);
+  const findReviewsBySongs = async (req, res) => {
+    const songId = req.params.idSong;
+    const reviews = await dao.findReviewsBySongs(songId);
     res.send(reviews);
   };
 
@@ -47,7 +49,7 @@ const ReviewsController = (app) => {
   app.post("/api/reviews/song/:idSong", createReview);
   app.put("/api/reviews/song/:idSong", updateReview);
   app.delete("/api/reviews/song/:idSong", deleteReview);
-  app.get("/api/reviews/song/:idSong", findReviewsByNotes);
+  app.get("/api/reviews/song/:idSong", findReviewsBySongs);
   app.get("/api/users/:host/reviews", findReviewsByHost);
   app.get("/api/reviews", findAllReviews);
 };
