@@ -48,6 +48,9 @@ The backend is deployed on Render.com. To deploy your own version, follow these 
 ## Usage
 API Documentation: Detailed API documentation can be found [here](https://developers.deezer.com/login?redirect=/api).
 
+Explore the app: Visit the live  application [here](https://main--snazzy-conkies-13e790.netlify.app/).
+
+
 ## Contributing
 We welcome contributions! Please follow these steps:
 
@@ -67,4 +70,3 @@ For any inquiries, feel free to reach out:
 - LinkedIn: [Profile](https://www.linkedin.com/in/nikhil-kulkarni-nk/)
 
 Thank you for checking out our backend! We hope you enjoy using it as much as we enjoyed building it. 🎉
-```
