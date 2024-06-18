@@ -1,4 +1,4 @@
-# Music Streaming and Event Booking App - Backend 🎧🎟️
+# Music Streaming and Event Booking App - Backend 🎧
 
 ## Overview
 Welcome to the backend of our music streaming and event booking application! This Node.js and Express application provides robust APIs for user management, music streaming, and event functionalities.
@@ -34,11 +34,8 @@ DEEZER_API_KEY=your_deezer_api_key
 
 5. **Start the development server:**
    npm start
-  The application will start on http://localhost:3000
+  The application will start on http://localhost:5000
 
-
-
-# The server will start on [http://localhost:5000](http://localhost:5000).
 
 ## Deployment
 The backend is deployed on Render.com. To deploy your own version, follow these steps:
